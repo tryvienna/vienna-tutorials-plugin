@@ -1,0 +1,25 @@
+{
+  "name": "plugin-vienna-tutorials",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Interactive tutorials and onboarding guides for Vienna",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ui": "./src/ui/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tryvienna/sdk": "^0.1.6"
+  },
+  "devDependencies": {
+    "@tryvienna/ui": "^0.0.7",
+    "graphql-tag": "^2.12.6",
+    "lucide-react": "^0.500.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.3"
+  }
+}
