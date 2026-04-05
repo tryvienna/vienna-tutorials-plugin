@@ -1,11 +1,4 @@
-/**
- * TutorialFeedCard — Entity feedCard component for app_tutorial.
- *
- * Renders a single tutorial as a rich card when referenced in the feed
- * via @vienna//app_tutorial/<id>. Also used by the TutorialFeed canvas
- * as a reusable card component.
- */
-
+import { useMemo } from 'react';
 import type { EntityFeedCardProps } from '@tryvienna/sdk';
 import { getTutorialById } from '../data';
 import { BookOpen, Clock, ChevronRight } from 'lucide-react';
@@ -17,14 +10,12 @@ const DIFFICULTY_COLORS: Record<string, string> = {
 };
 
 export function TutorialFeedCard({ uri, onNavigate }: EntityFeedCardProps) {
-  // Extract tutorial ID from URI: @vienna//app_tutorial/<id>
-  const id = uri.split('/').pop() ?? '';
-  const tutorial = getTutorialById(id);
+  const tutorial = useMemo(() => getTutorialById(uri.split('/').pop() ?? ''), [uri]);
 
   if (!tutorial) {
     return (
       <div className="rounded-xl border border-border bg-card p-4 shadow-sm dark:bg-surface-interactive">
-        <p className="text-sm text-muted-foreground">Tutorial not found: {id}</p>
+        <p className="text-sm text-muted-foreground">Tutorial not found: {uri}</p>
       </div>
     );
   }

@@ -1,11 +1,3 @@
-/**
- * TutorialFeed — Feed canvas component for vienna_tutorials.
- *
- * Renders a featured video on the home feed with detachable PiP support
- * and playback markers for automated workstream actions.
- * Referenced in feed.md as: @vienna//plugin/vienna_tutorials
- */
-
 import { useMemo, useCallback } from 'react';
 import type { FeedCanvasProps } from '@tryvienna/sdk';
 import { usePluginClient } from '@tryvienna/sdk/react';
@@ -86,7 +78,6 @@ export function TutorialFeed({ data, onNavigate }: FeedCanvasProps) {
         candyPaintId = wsId;
         console.log('[TutorialFeed] Created workstream "candy paint":', wsId);
 
-        // Set the new workstream as active
         await client.mutate<SetWorkstreamInFocusResult, SetWorkstreamInFocusVariables>({
           mutation: SET_WORKSTREAM_IN_FOCUS,
           variables: { id: wsId },
@@ -125,13 +116,13 @@ export function TutorialFeed({ data, onNavigate }: FeedCanvasProps) {
         <h3 className="text-sm font-medium">Featured</h3>
       </div>
       <DetachableCard
-        id="tutorials-featured-video"
+        id={CARD_ID}
         title="Featured"
         floatingSize={{ width: 320, height: 180 }}
       >
         <YouTubeEmbed
           videoId={FEATURED_VIDEO_ID}
-          cardId="tutorials-featured-video"
+          cardId={CARD_ID}
           title="Featured tutorial video"
         />
       </DetachableCard>
