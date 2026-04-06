@@ -1,6 +1,7 @@
 {
   "name": "plugin-vienna-tutorials",
   "version": "0.0.1",
+  "vienna-plugin": true,
   "private": true,
   "description": "Interactive tutorials and onboarding guides for Vienna",
   "type": "module",
